@@ -1,0 +1,290 @@
+<div class="cart-overlay" id="cartOverlay" aria-hidden="true">
+  <div class="cart-modal" id="cartModal" role="dialog" aria-modal="true" aria-label="Корзина">
+    <div class="cart-modal-inner">
+
+      <!-- LEFT: Checkout form -->
+      <div class="co-left" id="coLeft">
+        <div class="co-left-head">
+          <div>
+            <div class="co-title">Оформление заказа</div>
+            <div class="co-subtitle">Займёт не более 2 минут</div>
+          </div>
+          <button class="cart-modal-close" onclick="closeCart()" aria-label="Закрыть">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+          </button>
+        </div>
+
+        <div class="co-left-scroll">
+          <!-- Contact -->
+          <div class="co-section">
+            <div class="co-section-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              Контактные данные
+            </div>
+            <div class="co-grid-2">
+              <div class="field">
+                <label for="coName">Имя *</label>
+                <input id="coName" type="text" placeholder="Иван" autocomplete="given-name">
+                <div class="err-msg">Введите имя</div>
+              </div>
+              <div class="field">
+                <label for="coSurname">Фамилия *</label>
+                <input id="coSurname" type="text" placeholder="Иванов" autocomplete="family-name">
+                <div class="err-msg">Введите фамилию</div>
+              </div>
+            </div>
+            <div class="field">
+              <label for="coPhone">
+                <svg class="field-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.42 2 2 0 0 1 3.6 1.24h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 6.13 6.13l.97-.87a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                Телефон *
+              </label>
+              <input id="coPhone" type="tel" placeholder="+375 (29) 000-00-00" autocomplete="tel">
+              <div class="err-msg">Введите телефон</div>
+            </div>
+            <div class="co-optional-toggle" id="optionalToggle" onclick="toggleOptional()">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+              Дополнительные контакты (email, Telegram, Instagram)
+            </div>
+            <div class="co-optional" id="coOptional">
+              <div class="co-grid-3">
+                <div class="field">
+                  <label for="coEmail">
+                    <svg class="field-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                    Email
+                  </label>
+                  <input id="coEmail" type="email" placeholder="mail@example.com" autocomplete="email">
+                </div>
+                <div class="field">
+                  <label for="coTelegram">
+                    <svg class="field-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                    Telegram
+                  </label>
+                  <input id="coTelegram" type="text" placeholder="@username">
+                </div>
+                <div class="field">
+                  <label for="coInstagram">
+                    <svg class="field-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                    Instagram
+                  </label>
+                  <input id="coInstagram" type="text" placeholder="@username">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Delivery -->
+          <div class="co-section">
+            <div class="co-section-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 18H3V6a1 1 0 0 1 1-1h11v13"/><path d="M14 9h4l3 3v6h-2"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg>
+              Способ доставки
+            </div>
+            <div class="err-msg" id="deliveryErr" style="margin-bottom:8px">Выберите способ доставки</div>
+            <div class="delivery-cards">
+              <div class="delivery-card" data-delivery="europost" onclick="selectDelivery(this)">
+                <div class="delivery-card-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 18H3V6a1 1 0 0 1 1-1h11v13"/><path d="M14 9h4l3 3v6h-2"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></svg>
+                </div>
+                <div class="delivery-card-body">
+                  <div class="delivery-card-name">Европочта</div>
+                  <div class="delivery-card-sub">До отделения</div>
+                </div>
+                <div class="delivery-card-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+              </div>
+              <div class="delivery-card" data-delivery="belpost" onclick="selectDelivery(this)">
+                <div class="delivery-card-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M16.5 9.4 7.55 4.24"/><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+                </div>
+                <div class="delivery-card-body">
+                  <div class="delivery-card-name">Белпочта</div>
+                  <div class="delivery-card-sub">До отделения</div>
+                </div>
+                <div class="delivery-card-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+              </div>
+              <div class="delivery-card" data-delivery="courier" onclick="selectDelivery(this)">
+                <div class="delivery-card-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M1 3h15v13H1z"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+                </div>
+                <div class="delivery-card-body">
+                  <div class="delivery-card-name">Курьер</div>
+                  <div class="delivery-card-sub">Доставка по адресу</div>
+                </div>
+                <div class="delivery-card-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+              </div>
+              <div class="delivery-card" data-delivery="pickup" onclick="selectDelivery(this)">
+                <div class="delivery-card-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                </div>
+                <div class="delivery-card-body">
+                  <div class="delivery-card-name">Самовывоз</div>
+                  <div class="delivery-card-sub">г. Гомель</div>
+                </div>
+                <div class="delivery-card-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+              </div>
+            </div>
+
+            <!-- Delivery fields: Europost -->
+            <div class="delivery-fields" id="df-europost" style="display:none">
+              <div class="co-grid-2">
+                <div class="field">
+                  <label for="coCity">Населённый пункт *</label>
+                  <input id="coCity" type="text" placeholder="Гомель" autocomplete="address-level2">
+                  <div class="err-msg">Введите город</div>
+                </div>
+                <div class="field">
+                  <label for="coBranch">Номер отделения *</label>
+                  <input id="coBranch" type="text" placeholder="Например: №14">
+                  <div class="err-msg">Введите номер отделения</div>
+                </div>
+              </div>
+            </div>
+            <!-- Delivery fields: Belpost -->
+            <div class="delivery-fields" id="df-belpost" style="display:none">
+              <div class="co-grid-2">
+                <div class="field">
+                  <label for="coCityBp">Населённый пункт *</label>
+                  <input id="coCityBp" type="text" placeholder="Минск" autocomplete="address-level2">
+                  <div class="err-msg">Введите город</div>
+                </div>
+                <div class="field">
+                  <label for="coBranchBp">Номер отделения *</label>
+                  <input id="coBranchBp" type="text" placeholder="Например: №5">
+                  <div class="err-msg">Введите номер отделения</div>
+                </div>
+              </div>
+            </div>
+            <!-- Delivery fields: Courier -->
+            <div class="delivery-fields" id="df-courier" style="display:none">
+              <div class="co-grid-2">
+                <div class="field">
+                  <label for="coStreet">Улица *</label>
+                  <input id="coStreet" type="text" placeholder="ул. Советская" autocomplete="street-address">
+                  <div class="err-msg">Введите улицу</div>
+                </div>
+                <div class="field">
+                  <label for="coHouse">Дом *</label>
+                  <input id="coHouse" type="text" placeholder="12А">
+                  <div class="err-msg">Введите дом</div>
+                </div>
+              </div>
+              <div class="co-grid-3">
+                <div class="field"><label for="coApt">Квартира</label><input id="coApt" type="text" placeholder="45"></div>
+                <div class="field"><label for="coFloor">Этаж</label><input id="coFloor" type="text" placeholder="3"></div>
+                <div class="field"><label for="coEntry">Подъезд</label><input id="coEntry" type="text" placeholder="2"></div>
+              </div>
+              <div class="co-grid-2">
+                <div class="field"><label for="coBuilding">Корпус</label><input id="coBuilding" type="text" placeholder="1"></div>
+                <div class="field"><label for="coIntercom">Домофон</label><input id="coIntercom" type="text" placeholder="45Б"></div>
+              </div>
+            </div>
+            <!-- Pickup info -->
+            <div class="delivery-fields" id="df-pickup" style="display:none">
+              <div class="pickup-info">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                <div>
+                  <div class="pickup-info-title">Самовывоз</div>
+                  <div class="pickup-info-addr">Если вы планируете забрать заказ самовывозом в г.Гомель, <b>оставьте ваши контакты</b> и наш менеджер свяжется с вами. Вывоз осуществляется из Новобелицкого района</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Payment -->
+          <div class="co-section">
+            <div class="co-section-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+              Способ оплаты
+            </div>
+            <div class="err-msg" id="payErr" style="margin-bottom:8px">Выберите способ оплаты</div>
+            <div class="payment-cards">
+              <div class="payment-card" data-pay="card" onclick="selectPayCard(this)">
+                <div class="payment-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg></div>
+                <div class="payment-card-name">Банковская карта</div>
+                <div class="payment-card-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+              </div>
+              <div class="payment-card" data-pay="erip" onclick="selectPayCard(this)">
+                <div class="payment-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 22v-8.5C3 9 6.5 5.5 10 5c2-.3 5 .5 7 2.5s2.3 5.2 1 8l-2 3H3z"/><path d="M6 22v-4M12 22v-1"/></svg></div>
+                <div class="payment-card-name">ЕРИП</div>
+                <div class="payment-card-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+              </div>
+              <div class="payment-card" data-pay="online" onclick="selectPayCard(this)">
+                <div class="payment-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2z"/><path d="M12 6v6l4 2"/></svg></div>
+                <div class="payment-card-name">Онлайн QR-код</div>
+                <div class="payment-card-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Comment -->
+          <div class="co-section">
+            <div class="co-section-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+              Комментарий
+            </div>
+            <div class="field">
+              <textarea id="coComment" placeholder="Позвонить за час до доставки. Упаковать как подарок." style="min-height:100px"></textarea>
+            </div>
+          </div>
+        </div><!-- /co-left-scroll -->
+      </div><!-- /co-left -->
+
+      <!-- RIGHT: Order summary -->
+      <div class="co-right">
+        <div class="co-right-inner">
+          <div class="co-right-title">Ваш заказ</div>
+          <div class="co-items-list" id="coItemsList"></div>
+
+          <div class="co-summary">
+            <div class="co-summary-row">
+              <span>Товары</span>
+              <span id="coSubtotal">0 BYN</span>
+            </div>
+            <div class="co-summary-row">
+              <span>Доставка</span>
+              <span id="coDeliveryPrice">—</span>
+            </div>
+            <div class="co-summary-row" id="coDiscountRow" style="display:none;color:#4F6EA0">
+              <span>Скидка<span id="coPromoLabel"></span></span>
+              <span id="coDiscount">−0 BYN</span>
+            </div>
+            <div class="co-summary-total">
+              <span>Итого</span>
+              <span id="coTotal">0 BYN</span>
+            </div>
+          </div>
+
+          <div class="promo-row">
+            <input type="text" class="promo-input" id="promoInp" placeholder="Промокод" autocomplete="off">
+            <button class="promo-btn" onclick="submitPromo()">Применить</button>
+          </div>
+
+          <div class="co-consent">
+            <label class="co-consent-label">
+              <input type="checkbox" id="coConsent">
+              <span class="co-consent-check"></span>
+              <span class="co-consent-text">Я согласен с <a href="#" onclick="return false">обработкой персональных данных</a></span>
+            </label>
+          </div>
+
+          <button class="co-submit-btn" id="coSubmitBtn" onclick="submitOrder()">
+            <span id="coSubmitLabel">Оформить заказ</span>
+            <svg id="coSubmitSpinner" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;animation:spin .7s linear infinite"><path d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+        </div>
+      </div><!-- /co-right -->
+
+      <!-- Success screen -->
+      <div class="co-success" id="coSuccess" style="display:none">
+        <div class="co-success-inner">
+          <div class="co-success-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          </div>
+          <div class="co-success-title">Заказ оформлен!</div>
+          <div class="co-success-sub">Мы свяжемся с вами в ближайшее время для подтверждения.</div>
+          <button class="btn btn-primary" onclick="closeCart()" style="margin-top:24px">Закрыть</button>
+        </div>
+      </div>
+
+    </div><!-- /cart-modal-inner -->
+  </div>
+</div>

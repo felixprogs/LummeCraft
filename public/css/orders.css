@@ -1,0 +1,73 @@
+/* ══════════════════════════════════════════
+   LUMMECRAFT — Orders History Page
+══════════════════════════════════════════ */
+
+.orders-page { padding-top:68px; min-height:100vh; background:var(--bg2); }
+.orders-wrap { max-width:860px; margin:0 auto; padding:40px 24px 80px; }
+
+.orders-head { margin-bottom:32px; }
+.orders-head h1 { font-family:'Fraunces',serif; font-size:clamp(24px,3vw,34px); font-weight:700; margin-bottom:6px; }
+.orders-head p  { font-size:15px; color:var(--text-muted); }
+
+/* Filter tabs */
+.orders-tabs { display:flex; gap:6px; margin-bottom:24px; flex-wrap:wrap; }
+
+/* Order cards */
+.order-card {
+  background:#fff; border-radius:var(--r); box-shadow:var(--shadow-sm);
+  margin-bottom:16px; overflow:hidden;
+  transition:box-shadow var(--tr);
+}
+.order-card:hover { box-shadow:var(--shadow); }
+.order-head {
+  padding:18px 22px;
+  display:flex; align-items:center; gap:16px;
+  border-bottom:1px solid var(--bg2);
+  flex-wrap:wrap;
+}
+.order-num  { font-family:'Fraunces',serif; font-size:16px; font-weight:700; }
+.order-date { font-size:13px; color:var(--text-muted); }
+.order-status {
+  display:inline-flex; align-items:center; gap:5px;
+  padding:4px 11px; border-radius:var(--r-pill);
+  font-size:12px; font-weight:600;
+}
+.order-status.delivered  { background:var(--green-light); color:var(--green); }
+.order-status.processing { background:var(--accent-light); color:var(--accent-dark); }
+.order-status.cancelled  { background:var(--red-light); color:var(--red); }
+.order-status.shipped    { background:#FFF3E0; color:#E65100; }
+.order-total { font-family:'Fraunces',serif; font-size:17px; font-weight:700; margin-left:auto; }
+
+.order-items { padding:16px 22px; display:flex; flex-direction:column; gap:10px; }
+.oi { display:flex; align-items:center; gap:12px; }
+.oi-thumb { width:52px; height:52px; border-radius:var(--r-sm); font-size:26px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+.oi-thumb[data-type="paint"]   { background:linear-gradient(135deg,#fef3e8,#f0d9b8); }
+.oi-thumb[data-type="diamond"] { background:linear-gradient(135deg,#e8f0fc,#d0defc); }
+.oi-name  { font-size:14px; font-weight:600; }
+.oi-sub   { font-size:12px; color:var(--text-muted); }
+.oi-qty   { font-size:13px; color:var(--text-muted); margin-left:auto; white-space:nowrap; }
+.oi-price { font-size:14px; font-weight:700; margin-left:10px; white-space:nowrap; }
+
+.order-foot {
+  padding:14px 22px;
+  background:var(--bg);
+  display:flex; align-items:center; gap:10px; flex-wrap:wrap;
+  border-top:1px solid var(--bg2);
+}
+.order-addr  { font-size:13px; color:var(--text-muted); flex:1; }
+.order-reorder { padding:8px 18px; background:var(--accent); color:#fff; border:none; border-radius:var(--r-pill); font-size:13px; font-weight:600; cursor:pointer; transition:background var(--tr); }
+.order-reorder:hover { background:var(--accent-dark); }
+.order-cancel { padding:8px 18px; background:var(--bg3); color:var(--text); border:none; border-radius:var(--r-pill); font-size:13px; font-weight:600; cursor:pointer; transition:background var(--tr); }
+.order-cancel:hover { background:var(--red-light); color:var(--red); }
+
+/* Summary stats */
+.orders-stats { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-bottom:28px; }
+.ostat { background:#fff; border-radius:var(--r); padding:18px 20px; box-shadow:var(--shadow-sm); text-align:center; }
+.ostat-num   { font-family:'Fraunces',serif; font-size:26px; font-weight:700; color:var(--accent-dark); }
+.ostat-label { font-size:12px; color:var(--text-muted); margin-top:3px; }
+
+@media (max-width:600px) {
+  .orders-stats { grid-template-columns:1fr; }
+  .order-head   { gap:8px; }
+  .order-total  { margin-left:0; width:100%; }
+}

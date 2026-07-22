@@ -1,0 +1,86 @@
+/* ── Cart item: qty controls + remove button ──
+   Добавить в основной CSS (или <style> в <head>)
+──────────────────────────────────────────────── */
+
+.co-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border, #e5e7eb);
+}
+.co-item:last-child { border-bottom: none; }
+
+.co-item-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.co-item-name {
+  font-size: 13px;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.co-item-qty-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.co-item-qty-btn {
+  width: 22px;
+  height: 22px;
+  border: 1px solid var(--border, #d1d5db);
+  border-radius: 4px;
+  background: var(--bg2, #f3f4f6);
+  color: var(--text, #111);
+  font-size: 14px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  transition: background .15s;
+}
+.co-item-qty-btn:hover { background: var(--border, #d1d5db); }
+
+.co-item-qty {
+  font-size: 13px;
+  min-width: 18px;
+  text-align: center;
+}
+
+.co-item-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.co-item-price {
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.co-item-remove {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-muted, #9ca3af);
+  padding: 2px;
+  display: flex;
+  align-items: center;
+  border-radius: 4px;
+  transition: color .15s, background .15s;
+}
+.co-item-remove:hover {
+  color: #ef4444;
+  background: #fee2e2;
+}

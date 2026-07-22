@@ -1,0 +1,137 @@
+/* ══════════════════════════════════════
+   LUMMECRAFT — Decorative & Animations
+══════════════════════════════════════ */
+
+/* ── PAGE DECORATIONS (боковые орнаменты) ── */
+.page-deco {
+  position:fixed; top:0; bottom:0;
+  width:180px; pointer-events:none; z-index:0;
+  overflow:hidden;
+}
+.page-deco-left  { left:0; }
+.page-deco-right { right:0; }
+
+/* Оборачиваем контент, чтобы отступить от деко-полос */
+.page-wrap {
+  position:relative; z-index:1;
+}
+
+/* ── HERO BACKGROUND DECORATION ── */
+.hero-bg-deco {
+  position:absolute; inset:0; pointer-events:none; z-index:0;
+}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(24px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity:0; }
+  to   { opacity:1; }
+}
+@keyframes toastIn {
+  from { opacity:0; transform:translateY(12px); }
+  to   { opacity:1; transform:none; }
+}
+
+/* Независимые float-анимации для каждой карточки */
+@keyframes float1 {
+  0%   { transform:rotate(-8deg) translateY(0); }
+  50%  { transform:rotate(-8deg) translateY(-14px); }
+  100% { transform:rotate(-8deg) translateY(0); }
+}
+@keyframes float2 {
+  0%   { transform:rotate(7deg) translateY(0); }
+  50%  { transform:rotate(7deg) translateY(-10px); }
+  100% { transform:rotate(7deg) translateY(0); }
+}
+@keyframes float3 {
+  0%   { transform:rotate(5deg) translateY(0); }
+  50%  { transform:rotate(5deg) translateY(-16px); }
+  100% { transform:rotate(5deg) translateY(0); }
+}
+@keyframes float4 {
+  0%   { transform:rotate(-6deg) translateY(0); }
+  50%  { transform:rotate(-6deg) translateY(-12px); }
+  100% { transform:rotate(-6deg) translateY(0); }
+}
+
+@keyframes waveDrift {
+  0%   { transform:translateX(0) translateY(0); }
+  50%  { transform:translateX(10px) translateY(-6px); }
+  100% { transform:translateX(0) translateY(0); }
+}
+@keyframes dotPulse {
+  0%,100% { opacity:0.5; transform:scale(1); }
+  50%      { opacity:1;   transform:scale(1.2); }
+}
+@keyframes flowerSpin {
+  0%   { transform:rotate(0deg); }
+  100% { transform:rotate(360deg); }
+}
+@keyframes floatDeco {
+  0%   { transform:translateY(0); }
+  50%  { transform:translateY(-8px); }
+  100% { transform:translateY(0); }
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width:1280px) {
+  .page-deco { width:80px; }
+}
+@media (max-width:1100px) {
+  .page-deco { display:none; }
+  .benefits-grid  { grid-template-columns:repeat(2,1fr); }
+  .products-grid  { grid-template-columns:repeat(3,1fr); }
+  .footer-grid    { grid-template-columns:1fr 1fr; }
+  .catalog-layout { grid-template-columns:1fr; }
+  .filters-panel  { position:static; }
+  .catalog-grid   { grid-template-columns:repeat(3,1fr); }
+  .steps-grid     { grid-template-columns:repeat(2,1fr); }
+}
+
+@media (max-width:768px) {
+  nav { display:none; }
+  .menu-toggle { display:flex; }
+  .hero-inner  { grid-template-columns:1fr; gap:20px; min-height:auto; padding:60px 24px 80px; }
+  .hero-content{ order:1; text-align:center; }
+  .hero-visual { order:2; height:300px; width:100%; }
+  .hero-card   { width:130px; }
+  .card-1 { top:0;   left:0;  }
+  .card-2 { top:0;   right:0; }
+  .card-3 { bottom:0; left:20px; }
+  .card-4 { bottom:0; right:0;  }
+  .hero h1 { font-size:clamp(28px,7vw,40px); }
+  .hero-sub { max-width:100%; }
+  .hero-stats{ gap:24px; justify-content:center; }
+  .reviews-grid  { grid-template-columns:1fr; }
+  .steps-grid    { grid-template-columns:1fr; }
+  .categories-grid { grid-template-columns:1fr; }
+  .products-grid { grid-template-columns:repeat(2,1fr); }
+  .footer-grid   { grid-template-columns:1fr; }
+  .newsletter-inner { flex-direction:column; text-align:center; }
+  .newsletter-form  { flex-direction:column; width:100%; }
+  .newsletter-input { width:100%; }
+  .footer-bottom { flex-direction:column; gap:10px; text-align:center; }
+  .catalog-grid  { grid-template-columns:repeat(2,1fr); }
+  .form-row      { grid-template-columns:1fr; }
+  .cart-drawer   { width:100%; }
+  .payment-methods { grid-template-columns:1fr 1fr; }
+}
+
+@media (max-width:480px) {
+  .products-grid { grid-template-columns:1fr; }
+  .catalog-grid  { grid-template-columns:1fr; }
+  .benefits-grid { grid-template-columns:1fr; }
+}
+
+/* prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .hero-card, .reveal, .hero-badge, .hero h1, .hero-sub, .hero-actions, .hero-stats {
+    animation:none !important;
+    transition:none !important;
+    opacity:1 !important;
+    transform:none !important;
+  }
+}

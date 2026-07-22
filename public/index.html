@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="LummeCraft — картины по номерам и алмазная мозаика с доставкой по Беларуси. Более 240 наборов, быстрая доставка.">
+<title>LummeCraft — Картины по номерам и алмазная мозаика</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/vars.css">
+<link rel="stylesheet" href="css/transitions.css">
+<link rel="stylesheet" href="css/ui.css">
+<link rel="stylesheet" href="css/home.css">
+<link rel="stylesheet" href="css/home-extra.css">
+<link rel="stylesheet" href="css/cart-items.css">
+
+<!-- ═══ LUCIDE ICONS SPRITE ═══ -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-truck" viewBox="0 0 24 24"><path d="M5 18H3V6a1 1 0 0 1 1-1h11v13"/><path d="M14 9h4l3 3v6h-2"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/></symbol>
+    <symbol id="i-palette" viewBox="0 0 24 24"><circle cx="13.5" cy="6.5" r="0.5" fill="currentColor"/><circle cx="17.5" cy="10.5" r="0.5" fill="currentColor"/><circle cx="8.5" cy="7.5" r="0.5" fill="currentColor"/><circle cx="6.5" cy="12.5" r="0.5" fill="currentColor"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></symbol>
+    <symbol id="i-cart" viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></symbol>
+    <symbol id="i-package" viewBox="0 0 24 24"><path d="M16.5 9.4 7.55 4.24"/><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></symbol>
+    <symbol id="i-sparkles" viewBox="0 0 24 24"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3z"/><path d="M5 3v4"/><path d="M19 17v4"/><path d="M3 5h4"/><path d="M17 19h4"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></symbol>
+    <symbol id="i-heart" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78Z"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></symbol>
+    <symbol id="i-instagram" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></symbol>
+    <symbol id="i-send" viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></symbol>
+    <symbol id="i-user" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></symbol>
+    <symbol id="i-credit-card" viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></symbol>
+    <symbol id="i-smartphone" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></symbol>
+    <symbol id="i-banknote" viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2"/><path d="M6 12h.01M18 12h.01"/></symbol>
+    <symbol id="i-eiffel" viewBox="0 0 24 24"><path d="M12 2 9 22M12 2l3 20M9 22h6M8 16h8M9 11h6M10 7h4"/></symbol>
+    <symbol id="i-aurora" viewBox="0 0 24 24"><path d="M3 18c2-6 4-9 9-9s7 3 9 9"/><path d="M5 14c2-4 4-6 7-6"/><path d="M19 14c-1-2-2-4-4-5"/><circle cx="7" cy="6" r="1" fill="currentColor"/><circle cx="17" cy="5" r="1" fill="currentColor"/><circle cx="13" cy="3" r="1" fill="currentColor"/></symbol>
+    <symbol id="i-flower" viewBox="0 0 24 24"><circle cx="12" cy="12" r="2"/><path d="M12 2a3 3 0 0 0-3 3c0 1.5.8 2.8 2 3.5"/><path d="M12 2a3 3 0 0 1 3 3c0 1.5-.8 2.8-2 3.5"/><path d="M22 12a3 3 0 0 0-3-3c-1.5 0-2.8.8-3.5 2"/><path d="M22 12a3 3 0 0 1-3 3c-1.5 0-2.8-.8-3.5-2"/><path d="M12 22a3 3 0 0 0 3-3c0-1.5-.8-2.8-2-3.5"/><path d="M12 22a3 3 0 0 1-3-3c0-1.5.8-2.8 2-3.5"/><path d="M2 12a3 3 0 0 0 3 3c1.5 0 2.8-.8 3.5-2"/><path d="M2 12a3 3 0 0 1 3-3c1.5 0 2.8.8 3.5 2"/></symbol>
+    <symbol id="i-cat" viewBox="0 0 24 24"><path d="M12 5c-4 0-8 3-8 8 0 4 4 7 8 7s8-3 8-7c0-5-4-8-8-8z"/><path d="M5 7 4 3l4 3"/><path d="m19 7 1-4-4 3"/><circle cx="9" cy="13" r="1" fill="currentColor"/><circle cx="15" cy="13" r="1" fill="currentColor"/><path d="M10 17c.5.7 1.2 1 2 1s1.5-.3 2-1"/></symbol>
+    <symbol id="i-mountain" viewBox="0 0 24 24"><path d="m2 22 7-13 4 7 3-4 6 10z"/><circle cx="17" cy="6" r="2"/></symbol>
+    <symbol id="i-leaf" viewBox="0 0 24 24"><path d="M11 20A7 7 0 0 1 4 13c0-7 9-11 17-11-1 9-5 17-10 18z"/><path d="M2 22c4-3 7-7 9-12"/></symbol>
+  </defs>
+</svg>
+<!-- cart-modal.html грузим через fetch и монтируем -->
+<script>
+  window._cartModalReady = fetch('cart-modal.html')
+    .then(r => r.text())
+    .then(html => {
+      document.getElementById('cartModalMount').innerHTML = html;
+    })
+    .catch(e => console.error('[cart-modal] не удалось загрузить:', e));
+</script>
+<style>
+.how-tags{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:5px}
+.how-tag{background:var(--bg-soft,#f0f4fb);color:var(--text-muted,#6b7fa3);font-size:11px;font-weight:600;padding:2px 8px;border-radius:20px;letter-spacing:.02em;border:1px solid var(--border,#dde4f0)}
+
+/* ── Иконки соцсетей в шапке — единый размер с корзиной/бургером (как на catalog.html) ── */
+#mainHeader .header-socials { display:flex; gap:5px; align-items:center; }
+#mainHeader .header-right { display:flex; gap:20px; align-items:center; }
+#mainHeader .soc-btn {
+  color:#000000; background:transparent; border:none;
+  width:40px; height:40px; border-radius:10px;
+  display:inline-flex; align-items:center; justify-content:center;
+  transition:background var(--tr), color var(--tr);
+}
+#mainHeader .soc-btn:hover { color:var(--accent,#7C9AC9); background:rgba(0,0,0,.05); }
+header .icon-btn svg,
+.header-right .icon-btn svg,
+.header-right button svg,
+.header-right .lucide {
+  width:20px; height:20px; min-width:20px; min-height:20px;
+}
+</style>
+<script src="js/api.js"></script>
+<script src="js/config.js"></script>
+<script src="js/data.js"></script>
+<script src="js/shared.js"></script>
+<script src="js/cart-modal.js"></script>
+<script src="js/home.js"></script>         
+</head>
+<body>
+
+<!-- SIDE DECORATIONS -->
+
+
+<!-- HEADER -->
+<header id="mainHeader">
+  <div class="header-inner">
+    <a href="index.html" class="logo" aria-label="LummeCraft — главная">
+      <div class="logo-mark"><img src="images/logo.jpg" alt=""></div>
+      <div><div class="logo-name">LummeCraft</div><div class="logo-sub">• Hobby Store •</div></div>
+    </a>
+    <nav>
+      <a href="index.html"    class="nav-link" data-page="index.html">Главная</a>
+      <a href="catalog.html"  class="nav-link" data-page="catalog.html">Каталог</a>
+    </nav>
+    <div class="header-right">
+      <div class="header-socials">
+          <a class="icon-btn soc-btn" aria-label="Instagram" href="https://www.instagram.com/lummecraft.by?igsh=MTRha3FlNGNjZnB2cw==" rel="noopener"><svg class="lucide"><use href="#i-instagram"/></svg></a>
+          <a class="icon-btn soc-btn" aria-label="Telegram"  href="https://t.me/lummecraft" rel="noopener"><svg class="lucide"><use href="#i-send"/></svg></a>
+      </div>
+      <button class="icon-btn" onclick="openCart()" aria-label="Корзина">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        <span class="badge cart-badge" style="display:none">0</span>
+      </button>
+      <button class="icon-btn burger" id="burgerBtn" aria-label="Меню"><svg class="lucide"><use href="#i-menu"/></svg></button>
+    </div>
+  </div>
+</header>
+
+<!-- MOBILE NAV -->
+<div class="mob-nav" id="mobNav" role="dialog" aria-modal="true" aria-label="Меню">
+  <button class="icon-btn mob-nav-close" id="mobNavClose" aria-label="Закрыть">✕</button>
+  <a href="index.html"> Главная</a>
+  <a href="catalog.html"> Каталог</a>
+  <div class="mob-nav-sep"></div>
+  <a href="catalog.html?type=paint"> Картины по номерам</a>
+  <a href="catalog.html?type=diamond"> Алмазная мозаика</a>
+  <a href="catalog.html?type=other"> Разное</a>
+  <div class="mob-nav-sep"></div>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg" aria-hidden="true">
+    <svg width="100%" height="100%" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice">
+      <circle cx="200" cy="200" r="300" fill="rgba(124,154,201,.06)"/>
+      <circle cx="1240" cy="600" r="250" fill="rgba(124,154,201,.05)"/>
+      <circle cx="720" cy="800" r="180" fill="rgba(124,154,201,.04)"/>
+
+      <defs>
+        <symbol id="bloomFlower" viewBox="-20 -20 40 40">
+          <g>
+            <ellipse cx="0" cy="-10" rx="7" ry="11" fill="#F3D6E4" transform="rotate(0)"/>
+            <ellipse cx="0" cy="-10" rx="7" ry="11" fill="#F3D6E4" transform="rotate(72)"/>
+            <ellipse cx="0" cy="-10" rx="7" ry="11" fill="#F3D6E4" transform="rotate(144)"/>
+            <ellipse cx="0" cy="-10" rx="7" ry="11" fill="#F3D6E4" transform="rotate(216)"/>
+            <ellipse cx="0" cy="-10" rx="7" ry="11" fill="#F3D6E4" transform="rotate(288)"/>
+            <circle cx="0" cy="0" r="5" fill="#F6C667"/>
+          </g>
+        </symbol>
+        <symbol id="bloomLeaf" viewBox="-12 -8 24 16">
+          <path d="M -11 0 Q -4 -9 11 0 Q -4 9 -11 0 Z" fill="#9FC8A8"/>
+        </symbol>
+      </defs>
+
+      <!-- Левый вьющийся стебель -->
+      <g class="bloom-vine bloom-vine-left">
+        <path d="M -20 900 C 40 760, 20 640, 90 540 C 150 460, 110 360, 170 260 C 210 190, 190 120, 240 40"
+              fill="none" stroke="#9CB89F" stroke-width="4" stroke-linecap="round" opacity=".55"/>
+        <use href="#bloomLeaf" width="24" height="16" x="10"  y="800" class="vine-leaf"   style="animation-delay:.2s;--r:-30deg"/>
+        <use href="#bloomFlower" width="40" height="40" x="55" y="700" class="vine-flower" style="animation-delay:.5s"/>
+        <use href="#bloomLeaf" width="24" height="16" x="70"  y="600" class="vine-leaf"   style="animation-delay:.75s;--r:20deg"/>
+        <use href="#bloomFlower" width="40" height="40" x="115" y="500" class="vine-flower" style="animation-delay:1.05s"/>
+        <use href="#bloomLeaf" width="24" height="16" x="140" y="410" class="vine-leaf"   style="animation-delay:1.3s;--r:-15deg"/>
+        <use href="#bloomFlower" width="40" height="40" x="180" y="310" class="vine-flower" style="animation-delay:1.6s"/>
+        <use href="#bloomLeaf" width="24" height="16" x="195" y="220" class="vine-leaf"   style="animation-delay:1.85s;--r:25deg"/>
+        <use href="#bloomFlower" width="40" height="40" x="235" y="120" class="vine-flower" style="animation-delay:2.15s"/>
+      </g>
+
+      <!-- Правый вьющийся стебель (зеркально) -->
+      <g class="bloom-vine bloom-vine-right">
+        <path d="M 1460 900 C 1400 760, 1420 640, 1350 540 C 1290 460, 1330 360, 1270 260 C 1230 190, 1250 120, 1200 40"
+              fill="none" stroke="#9CB89F" stroke-width="4" stroke-linecap="round" opacity=".55"/>
+        <use href="#bloomLeaf" width="24" height="16" x="1430" y="800" class="vine-leaf"   style="animation-delay:.35s;--r:210deg"/>
+        <use href="#bloomFlower" width="40" height="40" x="1385" y="700" class="vine-flower" style="animation-delay:.65s"/>
+        <use href="#bloomLeaf" width="24" height="16" x="1370" y="600" class="vine-leaf"   style="animation-delay:.9s;--r:160deg"/>
+        <use href="#bloomFlower" width="40" height="40" x="1325" y="500" class="vine-flower" style="animation-delay:1.2s"/>
+        <use href="#bloomLeaf" width="24" height="16" x="1300" y="410" class="vine-leaf"   style="animation-delay:1.45s;--r:195deg"/>
+        <use href="#bloomFlower" width="40" height="40" x="1260" y="310" class="vine-flower" style="animation-delay:1.75s"/>
+        <use href="#bloomLeaf" width="24" height="16" x="1245" y="220" class="vine-leaf"   style="animation-delay:2s;--r:155deg"/>
+        <use href="#bloomFlower" width="40" height="40" x="1205" y="120" class="vine-flower" style="animation-delay:2.3s"/>
+      </g>
+    </svg>
+  </div>
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-badge"><svg class="lucide lucide-sm" style="color:var(--gold)"><use href="#i-star"/></svg> Более 140 наборов</div>
+      <h1>Создавайте шедевры <em>своими руками</em></h1>
+      <p class="hero-sub">Большой выбор картин по номерам и алмазной мозаики с доставкой по всей Беларуси. Для начинающих и опытных мастеров.</p>
+      <div class="hero-actions">
+        <a href="catalog.html" class="btn btn-primary btn-lg">Перейти в каталог</a>
+        <a href="#how" class="btn btn-secondary btn-lg">Как это работает</a>
+      </div>
+    </div>
+    <div class="hero-visual" aria-hidden="true">
+      <div class="hero-card card-1"><div class="hc-art"><img src="images/products/1.jpg" alt="Вечерний Париж" style="width:100%;height:100%;object-fit:cover;display:block;border-radius:inherit"></div><div class="hc-label"><div class="hc-cat">Картина по номерам</div><div class="hc-name">«Вечерний Париж»</div><div class="hc-price">от 39 BYN</div></div></div>
+      <div class="hero-card card-2"><div class="hc-art"><img src="images/products/3.jpg" alt="Северное сияние" style="width:100%;height:100%;object-fit:cover;display:block;border-radius:inherit"></div><div class="hc-label"><div class="hc-cat">Алмазная мозаика</div><div class="hc-name">«Северное сияние»</div><div class="hc-price">от 49 BYN</div></div></div>
+      <div class="hero-card card-3"><div class="hc-art"><img src="images/products/10.jpg" alt="Сакура в цвету" style="width:100%;height:100%;object-fit:cover;display:block;border-radius:inherit"></div><div class="hc-label"><div class="hc-cat">Картина по номерам</div><div class="hc-name">«Сакура в цвету»</div><div class="hc-price">от 22 BYN</div></div></div>
+      <div class="hero-card card-4"><div class="hc-art"><img src="images/products/5.jpg" alt="Коты у окна" style="width:100%;height:100%;object-fit:cover;display:block;border-radius:inherit"></div><div class="hc-label"><div class="hc-cat">Алмазная мозаика</div><div class="hc-name">«Коты у окна»</div><div class="hc-price">от 32 BYN</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFITS -->
+<section class="benefits reveal">
+  <div class="container">
+    <div class="benefits-grid">
+      <div class="benefit-card"><div class="benefit-icon"><svg class="lucide"><use href="#i-truck"/></svg></div><div class="benefit-title">Быстрая доставка</div><div class="benefit-desc">Отправляем в течение 24 часов. По Беларуси за 2–5 дней.</div></div>
+      <div class="benefit-card"><div class="benefit-icon"><svg class="lucide"><use href="#i-palette"/></svg></div><div class="benefit-title">Высокое качество</div><div class="benefit-desc">Профессиональные краски от ведущих производителей.</div></div>
+      <div class="benefit-card"><div class="benefit-icon"><svg class="lucide"><use href="#i-check"/></svg></div><div class="benefit-title">Проверка комплекта</div><div class="benefit-desc">Каждый набор проходит контроль — все цвета и аксессуары в наличии.</div></div>
+      <div class="benefit-card"><div class="benefit-icon"><svg class="lucide"><use href="#i-chat"/></svg></div><div class="benefit-title">Поддержка 7/7</div><div class="benefit-desc">Наши эксперты ответят ежедневно с 9:00 до 21:00.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- HITS MARQUEE -->
+<section class="home-products" id="products">
+  <div class="container">
+    <div class="section-header reveal center">
+      <div class="section-label">Популярное</div>
+      <div class="section-title" style="margin-bottom:8px">Хиты продаж</div>
+      <div class="section-sub">6 самых любимых наборов наших покупателей</div>
+    </div>
+
+    <div class="hits-marquee" aria-label="Хиты продаж">
+      <div class="hits-track">
+        <!-- 6 cards ×2 для бесшовного цикла -->
+        <a href="catalog.html?id=1" class="hit-card"><div class="hit-art"><img src="images/products/1.jpg" alt="Вечерний Париж" style="width:100%;height:100%;object-fit:cover;display:block;border-radius:inherit"></div><div class="hit-body"><div class="hit-cat">Картина</div><div class="hit-name">«Вечерний Париж»</div><div class="hit-price">от 39 BYN</div></div></a>
+        <a href="catalog.html?id=3" class="hit-card"><div class="hit-art"><img src="images/products/3.jpg" alt="Северное сияние" style="width:100%;height:100%;object-fit:cover;display:block;border-radius:inherit"></div><div class="hit-body"><div class="hit-cat">Мозаика</div><div class="hit-name">«Северное сияние»</div><div class="hit-price">от 49 BYN</div></div></a>
+        <a href="catalog.html?id=10" class="hit-card"><div class="hit-art"><img src="images/products/10.jpg" alt="Сакура в цвету" style="width:100%;height:100%;object-fit:cover;display:block;border-radius:inherit"></div><div class="hit-body"><div class="hit-cat">Картина</div><div class="hit-name">«Сакура в цвету»</div><div class="hit-price">от 22 BYN</div></div></a>
+        <a href="catalog.html?id=5" class="hit-card"><div class="hit-art"><img src="images/products/5.jpg" alt="Коты у окна" style="width:100%;height:100%;object-fit:cover;display:block;border-radius:inherit"></div><div class="hit-body"><div class="hit-cat">Мозаика</div><div class="hit-name">«Коты у окна»</div><div class="hit-price">от 32 BYN</div></div></a>
+        <a href="catalog.html?id=6" class="hit-card"><div class="hit-art"><img src="images/products/6.jpg" alt="Горный пейзаж" style="width:100%;height:100%;object-fit:cover;display:block;border-radius:inherit"></div><div class="hit-body"><div class="hit-cat">Картина</div><div class="hit-name">«Горный пейзаж»</div><div class="hit-price">от 75 BYN</div></div></a>
+        <a href="catalog.html?id=9" class="hit-card"><div class="hit-art"><img src="images/products/9.jpg" alt="Тропические птицы" style="width:100%;height:100%;object-fit:cover;display:block;border-radius:inherit"></div><div class="hit-body"><div class="hit-cat">Мозаика</div><div class="hit-name">«Тропические птицы»</div><div class="hit-price">от 45 BYN</div></div></a>
+
+        <!-- дубль -->
+        <a href="catalog.html?id=1" class="hit-card" aria-hidden="true"><div class="hit-art"><img src="images/products/1.jpg" alt="" style="width:100%;height:100%;object-fit:cover;display:block;border-radius:inherit"></div><div class="hit-body"><div class="hit-cat">Картина</div><div class="hit-name">«Вечерний Париж»</div><div class="hit-price">от 39 BYN</div></div></a>
+        <a href="catalog.html?id=3" class="hit-card" aria-hidden="true"><div class="hit-art"><img src="images/products/3.jpg" alt="" style="width:100%;height:100%;object-fit:cover;display:block;border-radius:inherit"></div><div class="hit-body"><div class="hit-cat">Мозаика</div><div class="hit-name">«Северное сияние»</div><div class="hit-price">от 49 BYN</div></div></a>
+        <a href="catalog.html?id=10" class="hit-card" aria-hidden="true"><div class="hit-art"><img src="images/products/10.jpg" alt="" style="width:100%;height:100%;object-fit:cover;display:block;border-radius:inherit"></div><div class="hit-body"><div class="hit-cat">Картина</div><div class="hit-name">«Сакура в цвету»</div><div class="hit-price">от 22 BYN</div></div></a>
+        <a href="catalog.html?id=5" class="hit-card" aria-hidden="true"><div class="hit-art"><img src="images/products/5.jpg" alt="" style="width:100%;height:100%;object-fit:cover;display:block;border-radius:inherit"></div><div class="hit-body"><div class="hit-cat">Мозаика</div><div class="hit-name">«Коты у окна»</div><div class="hit-price">от 32 BYN</div></div></a>
+        <a href="catalog.html?id=6" class="hit-card" aria-hidden="true"><div class="hit-art"><img src="images/products/6.jpg" alt="" style="width:100%;height:100%;object-fit:cover;display:block;border-radius:inherit"></div><div class="hit-body"><div class="hit-cat">Картина</div><div class="hit-name">«Горный пейзаж»</div><div class="hit-price">от 75 BYN</div></div></a>
+        <a href="catalog.html?id=9" class="hit-card" aria-hidden="true"><div class="hit-art"><img src="images/products/9.jpg" alt="" style="width:100%;height:100%;object-fit:cover;display:block;border-radius:inherit"></div><div class="hit-body"><div class="hit-cat">Мозаика</div><div class="hit-name">«Тропические птицы»</div><div class="hit-price">от 45 BYN</div></div></a>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:36px">
+      <a href="catalog.html" class="btn btn-primary btn-lg">Смотреть весь каталог →</a>
+    </div>
+  </div>
+</section>
+
+<!-- HOW TO ORDER -->
+<section class="how-section" id="how">
+  <div class="container">
+    <div class="section-header center reveal">
+      <div class="section-label">Просто и понятно</div>
+      <div class="section-title">Как сделать заказ</div>
+      <div class="section-sub">От выбора набора до получения — 4 шага</div>
+    </div>
+
+    <div class="how-grid reveal">
+
+      <!-- Step 1 -->
+      <div class="how-card">
+        <div class="how-num">01</div>
+        <div class="how-icon">
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" width="36" height="36">
+            <rect x="6" y="8" width="36" height="32" rx="4" stroke="currentColor" stroke-width="2.2"/>
+            <circle cx="20" cy="20" r="6" stroke="currentColor" stroke-width="2.2"/>
+            <path d="M24.5 24.5L30 30" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+            <path d="M14 36h20" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity=".4"/>
+            <path d="M14 32h10" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity=".4"/>
+          </svg>
+        </div>
+        <div class="how-title">Выберите набор</div>
+        <div class="how-desc">Подберите картину по сюжету, размеру или типу — картины по номерам или алмазная мозаика</div>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="how-card">
+        <div class="how-num">02</div>
+        <div class="how-icon">
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" width="36" height="36">
+            <path d="M8 10h4l5 18h14l4-13H16" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="22" cy="33" r="2.5" stroke="currentColor" stroke-width="2.2"/>
+            <circle cx="33" cy="33" r="2.5" stroke="currentColor" stroke-width="2.2"/>
+            <rect x="28" y="6" width="12" height="14" rx="2" stroke="currentColor" stroke-width="2" fill="white"/>
+            <path d="M31 13h6M34 10v6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="how-title">Добавьте в корзину</div>
+        <div class="how-desc">Укажите имя, фамилию и номер телефона — этого достаточно. Также возможно добавить Instagram или Telegram</div>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="how-card">
+        <div class="how-num">03</div>
+        <div class="how-icon">
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" width="36" height="36">
+            <!-- truck body -->
+            <path d="M6 14h24v20H6z" rx="2" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/>
+            <path d="M30 20h7l5 6v8h-12V20z" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/>
+            <circle cx="13" cy="36" r="3" stroke="currentColor" stroke-width="2.2"/>
+            <circle cx="37" cy="36" r="3" stroke="currentColor" stroke-width="2.2"/>
+            <!-- delivery options dots -->
+            <circle cx="15" cy="10" r="1.5" fill="currentColor" opacity=".5"/>
+            <circle cx="22" cy="10" r="1.5" fill="currentColor" opacity=".5"/>
+            <circle cx="29" cy="10" r="1.5" fill="currentColor" opacity=".5"/>
+          </svg>
+        </div>
+        <div class="how-title">Выберите доставку и оплату</div>
+        <div class="how-desc">
+        Доставляем товары Европочтой, Белпочтой до отделения или курьером по адресу. Также доступен самовывоз в Гомеле (по согласованию). Оплатить заказ можно картой, наличными, через ЕРИП или онлайн.
+        </div>
+      </div>
+
+      <!-- Step 4 -->
+      <div class="how-card">
+        <div class="how-num">04</div>
+        <div class="how-icon">
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" width="36" height="36">
+            <rect x="10" y="8" width="28" height="34" rx="3" stroke="currentColor" stroke-width="2.2"/>
+            <path d="M16 18h16M16 24h16M16 30h10" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity=".5"/>
+            <circle cx="35" cy="35" r="9" fill="white" stroke="currentColor" stroke-width="2.2"/>
+            <path d="M30 35l3.5 3.5L40 31" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="how-title">Получите и творите!</div>
+        <div class="how-desc">Мы свяжемся для подтверждения. Отправляем в течение 24 ч — всё аккуратно упаковано</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FAQ (без «Что входит в комплект?») -->
+<section class="faq-section" id="faq">
+  <div class="container">
+    <div class="section-header center reveal"><div class="section-label">FAQ</div><div class="section-title">Частые вопросы</div></div>
+    <div class="faq-list">
+      <div class="faq-item reveal" onclick="toggleFaq(this)"><div class="faq-q">Подходит ли для начинающих? <span class="faq-icon">+</span></div><div class="faq-a">Да! У нас есть специальные наборы «Лёгкая» — для новичков. Небольшое количество цветов и простые сюжеты делают процесс доступным даже для детей от 10 лет.</div></div>
+      <div class="faq-item reveal" onclick="toggleFaq(this)"><div class="faq-q">Сколько занимает доставка? <span class="faq-icon">+</span></div><div class="faq-a">Отправляем в течение 24 часов. По Минску — 1–2 дня, по Беларуси — 3–5 рабочих дней. Бесплатная доставка при заказе от 50 BYN.</div></div>
+      <div class="faq-item reveal" onclick="toggleFaq(this)"><div class="faq-q">Можно ли вернуть товар? <span class="faq-icon">+</span></div><div class="faq-a">Да, в течение 14 дней с момента получения, если набор не был распакован. Деньги возвращаем в течение 3–5 рабочих дней.</div></div>
+      <div class="faq-item reveal" onclick="toggleFaq(this)"><div class="faq-q">Есть ли подарочная упаковка? <span class="faq-icon">+</span></div><div class="faq-a">Да! При оформлении заказа можно указать пожелания в комментарии. Идеальный вариант для подарка на день рождения.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">LummeCraft</div>
+        <div class="footer-desc">Магазин картин по номерам и алмазной мозаики. Создаём радость творчества для всей семьи.</div>
+      </div>
+      <div>
+        <div class="footer-col-title">Каталог</div>
+        <a href="catalog.html" class="footer-link">Картины по номерам</a>
+        <a href="catalog.html?type=diamond" class="footer-link">Алмазная мозаика</a>
+        <a href="catalog.html?type=other" class="footer-link">Разное</a>
+      </div>
+      <div>
+        <div class="footer-col-title">Покупателям</div>
+        <a href="#how"  class="footer-link">Как сделать заказ</a>
+        <a href="#faq"  class="footer-link">Доставка и оплата</a>
+        <a href="#faq"  class="footer-link">Возврат товара</a>
+      </div>
+      <div>
+        <div class="footer-col-title">Контакты</div>
+        <a href="tel:+375291442602" class="footer-link">+375 (29) 144-26-02</a>
+        <a href="https://t.me/lummecraft" class="footer-link">Telegram</a>
+        <a href="https://www.instagram.com/lummecraft.by?igsh=MTRha3FlNGNjZnB2cw==" class="footer-link">Instagram</a>
+        <a href="mailto:lummecraft@gmail.com" class="footer-link">lummecraft@gmail.com</a>
+        <div class="footer-link">Пн–Вс, 10:00–22:00</div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2026 LummeCraft. Все права защищены.</div>
+      <div style="display:flex;gap:20px">
+        <a href="#">Политика конфиденциальности</a>
+        <a href="#">Публичная оферта</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div id="cartModalMount"></div>
+
+<!-- PRODUCT DETAIL MODAL -->
+<div class="modal-back" id="pdModal" role="dialog" aria-modal="true" aria-label="Карточка товара">
+  <div class="modal-box pd-modal-box"></div>
+</div>
+
+<!-- SEARCH OVERLAY -->
+<div class="search-overlay" id="searchOverlay" role="search">
+  <div class="search-box">
+    <div class="search-input-row">
+      <svg class="lucide" style="color:var(--text-muted)"><use href="#i-search"/></svg>
+      <input type="text" class="search-inp" id="searchInp" placeholder="Поиск товаров…" autocomplete="off">
+      <button class="icon-btn" onclick="closeSearchOverlay()" aria-label="Закрыть">✕</button>
+    </div>
+    <div class="search-results" id="searchResults"></div>
+  </div>
+</div>
+
+<!-- TOAST & SCROLL TOP -->
+<div class="toast-wrap" id="toastWrap" aria-live="polite"></div>
+<button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Наверх">↑</button>
+</body>
+</html>

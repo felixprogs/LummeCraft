@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Каталог LummeCraft — картины по номерам и алмазная мозаика. Фильтры по типу, размеру, сложности и цене.">
+<title>Каталог — LummeCraft</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Capriola&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;1,9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/vars.css">
+<link rel="stylesheet" href="css/modal-styles.css">
+<link rel="stylesheet" href="css/ui.css">
+<link rel="stylesheet" href="css/catalog.css">
+<link rel="stylesheet" href="css/cart-items.css">
+<style>
+.product-add, button { font-size: 13px !important; padding: 8px 14px !important; min-height: 38px !important; }
+</style>
+<!-- cart-modal.html грузим через fetch и монтируем -->
+<script>
+  window._cartModalReady = fetch('cart-modal.html')
+    .then(r => r.text())
+    .then(html => {
+      document.getElementById('cartModalMount').innerHTML = html;
+    })
+    .catch(e => console.error('[cart-modal] не удалось загрузить:', e));
+</script>
+<script src="js/api.js"></script>
+<script src="js/config.js"></script>
+<script src="js/data.js"></script>
+<script src="js/shared.js"></script>
+<script src="js/cart-modal.js"></script>
+<script src="js/catalog.js"></script>
+<script src="js/modal-logic.js"></script>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-instagram" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></symbol>
+    <symbol id="i-send" viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></symbol>
+  </defs>
+</svg>
+</head>
+<body>
+
+<!-- HEADER -->
+<header id="mainHeader">
+  <div class="header-inner">
+    <a href="index.html" class="logo" aria-label="LummeCraft — главная">
+      <div class="logo-mark"><img src="images/logo.jpg" alt=""></div>
+      <div><div class="logo-name">LummeCraft</div><div class="logo-sub">• Hobby Store •</div></div>
+    </a>
+    <nav>
+      <a href="index.html"   class="nav-link" data-page="index.html">Главная</a>
+      <a href="catalog.html" class="nav-link" data-page="catalog.html">Каталог</a>
+    </nav>
+    <div class="header-right">
+      <div class="header-socials">
+          <a class="icon-btn soc-btn" aria-label="Instagram" href="https://www.instagram.com/lummecraft.by?igsh=MTRha3FlNGNjZnB2cw==" rel="noopener"><svg class="lucide"><use href="#i-instagram"/></svg></a>
+          <a class="icon-btn soc-btn" aria-label="Telegram"  href="https://t.me/lummecraft" rel="noopener"><svg class="lucide"><use href="#i-send"/></svg></a>
+      </div>
+      <button class="icon-btn" onclick="openCart()" aria-label="Корзина">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        <span class="badge cart-badge" style="display:none">0</span>
+      </button>
+      <button class="icon-btn burger" id="burgerBtn" aria-label="Меню">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="mob-nav" id="mobNav" role="dialog" aria-modal="true">
+  <button class="icon-btn mob-nav-close" id="mobNavClose" aria-label="Закрыть">✕</button>
+  <a href="index.html">🏠 Главная</a>
+  <a href="catalog.html">🎨 Каталог</a>
+  <div class="mob-nav-sep"></div>
+  <a href="catalog.html?type=paint">🎨 Картины по номерам</a>
+  <a href="catalog.html?type=diamond">💎 Алмазная мозаика</a>
+  <a href="catalog.html?sale=1">🔥 Акции</a>
+  <div class="mob-nav-sep"></div>
+  <a href="check-order.html">Отследить заказ</a>
+</div>
+
+<!-- PAGE HERO -->
+<div class="catalog-page">
+  <div class="page-hero">
+    <div class="container">
+      <div class="breadcrumb" style="margin-bottom:14px">
+        <a href="index.html">Главная</a><span class="sep">/</span><span>Каталог</span>
+      </div>
+      <div class="page-hero-title">Каталог</div>
+      <div class="page-hero-sub">Картины по номерам и алмазная мозаика — найдите свой идеальный набор</div>
+      <!-- Inline catalog search -->
+      <div style="max-width:480px">
+        <div style="display:flex;align-items:center;gap:8px;background:#fff;border:1.5px solid var(--bg3);border-radius:var(--r-pill);padding:8px 16px;box-shadow:var(--shadow-sm)">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" style="color:var(--text-muted);flex-shrink:0"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+          <input type="text" id="catSearchInp" placeholder="Поиск в каталоге…" autocomplete="off"
+            style="border:none;outline:none;font-size:14px;width:100%;background:transparent;font-family:inherit"
+            oninput="doCatSearch(this.value)">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CATALOG LAYOUT -->
+  <div class="container">
+    <div class="catalog-layout">
+
+      <!-- FILTERS -->
+      <div>
+        <!-- Mobile filter toggle (shown <900px) -->
+        <button class="btn btn-ghost btn-sm filter-toggle" style="display:none;width:100%;margin-bottom:12px" onclick="toggleFilterPanel()">
+          ⚙️ Фильтры
+        </button>
+        <div id="filtersPanelWrap" class="filters-panel-wrap">
+          <div class="filters-panel">
+            <div class="fp-title">Фильтры <button class="fp-reset" onclick="resetFilters()">Сбросить</button></div>
+
+            <div class="fp-group">
+              <div class="fp-group-title">Тип набора</div>
+              <label class="fp-check"><input type="checkbox" data-type="paint" checked onchange="setType('paint',this.checked)"> Картины по номерам</label>
+              <label class="fp-check"><input type="checkbox" data-type="diamond" checked onchange="setType('diamond',this.checked)"> Алмазная мозаика</label>
+              <label class="fp-check"><input type="checkbox" data-type="other" checked onchange="setType('other', this.checked)"> Разное</label>
+            </div>
+
+            <div class="fp-group">
+              <div class="fp-group-title">Размер</div>
+              <div class="size-chips">
+                <span class="size-chip" data-size="30×40" onclick="toggleSize(this,'30×40')">30×40</span>
+                <span class="size-chip" data-size="40×50" onclick="toggleSize(this,'40×50')">40×50</span>
+                <span class="size-chip" data-size="50×65" onclick="toggleSize(this,'50×65')">50×65</span>
+                <span class="size-chip" data-size="60×80" onclick="toggleSize(this,'60×80')">60×80</span>
+              </div>
+            </div>
+
+            <div class="fp-group">
+              <div class="fp-group-title">Цена, BYN</div>
+              <div class="price-row">
+                <input type="number" class="price-inp" id="priceMin" placeholder="от" min="0">
+                <span class="price-sep">—</span>
+                <input type="number" class="price-inp" id="priceMax" placeholder="до" min="0">
+              </div>
+              <button class="fp-apply" style="margin-top:8px" onclick="applyPrice()">Применить цену</button>
+            </div>
+
+            <div class="fp-group">
+              <div class="fp-group-title">Сложность</div>
+              <div class="diff-opts">
+                <button class="diff-btn on" data-diff="0" onclick="setDiff(0)"><span class="diff-label">Любая</span></button>
+                <button class="diff-btn" data-diff="1" onclick="setDiff(1)"><span class="ds on">★</span><span class="ds off">★★★★</span><span class="diff-label">Лёгкая</span></button>
+                <button class="diff-btn" data-diff="3" onclick="setDiff(3)"><span class="ds on">★★★</span><span class="ds off">★★</span><span class="diff-label">Средняя</span></button>
+                <button class="diff-btn" data-diff="5" onclick="setDiff(5)"><span class="ds on">★★★★★</span><span class="diff-label">Сложная</span></button>
+              </div>
+            </div>
+
+            <div class="fp-group">
+              <div class="fp-group-title">Наличие</div>
+              <label class="fp-check"><input type="checkbox" id="stockOnly" onchange="setStock(this.checked)"> Только в наличии</label>
+            </div>
+
+            <button class="fp-apply" onclick="renderCatalog();toast('Фильтры применены','ok')">Применить фильтры</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- GRID -->
+      <div class="catalog-main">
+        <div class="catalog-top">
+          <div class="catalog-count" id="catCount">Загрузка…</div>
+          <div class="catalog-right">
+            <select class="sort-select" onchange="setSort(this.value)" aria-label="Сортировка">
+              <option value="popular">Популярные</option>
+              <option value="cheap">Сначала дешевле</option>
+              <option value="expensive">Сначала дороже</option>
+              <option value="rating">По рейтингу</option>
+              <option value="new">Новинки</option>
+              <option value="discount">По скидке</option>
+            </select>
+            <div class="view-toggle" role="group" aria-label="Вид">
+              <button class="vt-btn on" onclick="setView('grid',this)" title="Сетка" aria-pressed="true">⊞</button>
+              <button class="vt-btn"    onclick="setView('list',this)" title="Список" aria-pressed="false">☰</button>
+            </div>
+          </div>
+        </div>
+        <div class="active-filters" id="activeTags"></div>
+        <div class="catalog-grid" id="catGrid"></div>
+        <div class="pagination" id="pagination"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER (compact) -->
+<footer>
+  <div class="container">
+    <div class="footer-bottom" style="border-top:none;padding-top:0;padding:24px 0">
+      <div>© 2025 LummeCraft</div>
+      <div style="display:flex;gap:20px">
+        <a href="index.html">Главная</a>
+        <a href="orders.html">Мои заказы</a>
+        <a href="index.html#faq">FAQ</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div id="cartModalMount"></div>
+
+<div class="modal-back" id="pdModal" role="dialog">
+  <div class="modal-box pd-modal-box">
+    <button class="modal-close-trigger" onclick="closeProductModal()">✕</button>
+    <div class="pd-layout">
+      </div>
+  </div>
+</div>
+
+<div class="search-overlay" id="searchOverlay" role="search">
+  <div class="search-box">
+    <div class="search-input-row">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;color:var(--text-muted)"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      <input type="text" class="search-inp" id="searchInp" placeholder="Поиск товаров…" autocomplete="off">
+      <button class="icon-btn" onclick="closeSearchOverlay()" aria-label="Закрыть">✕</button>
+    </div>
+    <div class="search-results" id="searchResults"></div>
+  </div>
+</div>
+
+<div class="toast-wrap" id="toastWrap" aria-live="polite"></div>
+<button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Наверх">↑</button>
+
+
+<script>
+// Handle URL params (?type=paint, ?sale=1, ?new=1)
+(function() {
+  const p = new URLSearchParams(location.search);
+  if (p.get('type') === 'paint')   catState.types = ['paint'];
+  if (p.get('type') === 'diamond') catState.types = ['diamond'];
+  if (p.get('type') === 'other') catState.types = ['other'];
+  if (p.get('sale') === '1') catState.sort = 'discount';
+  if (p.get('new')  === '1') catState.sort = 'new';
+})();
+</script>
+</body>
+</html>

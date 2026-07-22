@@ -1,0 +1,4 @@
+.env
+order_counter.txt
+orders_backup.jsonl
+service-account.json

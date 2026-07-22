@@ -1,0 +1,40 @@
+/* ══════════════════════════════════════
+   LUMMECRAFT — Variables & Reset
+══════════════════════════════════════ */
+:root {
+  --bg:           #FBFAF6;
+  --bg2:          #F4F1EA;
+  --bg3:          #ECE7DC;
+  --accent:       #7C9AC9;
+  --accent-dark:  #4F6EA0;
+  --accent-light: #D6E0F2;
+  --beige:        #EFE4D2;
+  --beige-dark:   #C9B89A;
+  --cream:        #F4EDDC;
+  --text:         #2D2D2D;
+  --text-muted:   #7A7A7A;
+  --text-light:   #B0A99E;
+  --white:        #FFFFFF;
+  --green:        #6BAF7A;
+  --green-light:  #EBF5EE;
+  --red:          #E07070;
+  --shadow:       0 4px 24px rgba(0,0,0,0.07);
+  --shadow-hover: 0 8px 40px rgba(0,0,0,0.13);
+  --radius:       16px;
+  --radius-sm:    10px;
+  --radius-pill:  50px;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+h1, h2, h3 { letter-spacing: -0.01em; }
+::selection { background: var(--accent-light); color: var(--accent-dark); }
